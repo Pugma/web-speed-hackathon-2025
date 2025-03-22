@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import Ellipsis from 'react-ellipsis-component';
 import { Flipped } from 'react-flip-toolkit';
 import { NavLink } from 'react-router';
@@ -19,16 +20,18 @@ export const SeriesItem = ({ series }: Props) => {
         {({ isTransitioning }) => {
           return (
             <>
-              <div className="relative overflow-hidden rounded-[8px] border-[2px] border-solid border-[#FFFFFF1F]">
-                <Flipped stagger flipId={isTransitioning ? `series-${series.id}` : 0}>
-                  <img alt="" className="h-auto w-full" src={series.thumbnailUrl} width={373} />
-                </Flipped>
-              </div>
-              <div className="p-[8px]">
-                <div className="text-[14px] font-bold text-[#ffffff]">
-                  <Ellipsis ellipsis reflowOnResize maxLine={2} text={series.title} visibleLine={2} />
+              <Suspense>
+                <div className="relative overflow-hidden rounded-[8px] border-[2px] border-solid border-[#FFFFFF1F]">
+                  <Flipped stagger flipId={isTransitioning ? `series-${series.id}` : 0}>
+                    <img alt="" className="h-auto w-full" src={series.thumbnailUrl} width={273} />
+                  </Flipped>
                 </div>
-              </div>
+                <div className="p-[8px]">
+                  <div className="text-[14px] font-bold text-[#ffffff]">
+                    <Ellipsis ellipsis reflowOnResize maxLine={2} text={series.title} visibleLine={2} />
+                  </div>
+                </div>
+              </Suspense>
             </>
           );
         }}
