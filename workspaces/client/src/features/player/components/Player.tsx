@@ -1,4 +1,3 @@
-import { Icon } from '@iconify/react';
 import { Ref, useEffect, useRef } from 'react';
 import invariant from 'tiny-invariant';
 import { assignRef } from 'use-callback-ref';
@@ -50,7 +49,7 @@ export const Player = ({ className, loop, playerRef, playerType, playlistUrl }: 
         <div ref={mountRef} className="size-full" />
 
         <div className="absolute inset-0 z-[-10] grid place-content-center">
-          <Icon className="block size-[48px] text-[#ffffff]" icon="line-md:loading-twotone-loop" />
+          <div className="i-line-md:loading-twotone-loop size-[48px] text-[#ffffff]" />
         </div>
       </div>
     </div>

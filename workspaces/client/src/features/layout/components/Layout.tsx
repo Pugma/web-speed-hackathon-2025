@@ -1,4 +1,3 @@
-import { Icon } from '@iconify/react';
 import classNames from 'classnames';
 import { ReactNode, useEffect, useState } from 'react';
 import { Flipper } from 'react-flip-toolkit';
@@ -76,9 +75,8 @@ export const Layout = ({ children }: Props) => {
               type="button"
               onClick={isSignedIn ? authActions.openSignOutDialog : authActions.openSignInDialog}
             >
-              <Icon
-                className="m-[4px] block size-[20px] shrink-0 grow-0"
-                icon={`fa-solid:${isSignedIn ? 'sign-out-alt' : 'user'}`}
+              <div
+                className={`i-fa-solid:${isSignedIn ? 'sign-out-alt' : 'user'} m-[4px] size-[20px] shrink-0 grow-0`}
               />
               <span className="grow-1 shrink-1 ml-[16px] text-left text-[14px] font-bold">
                 {isSignedIn ? 'ログアウト' : 'ログイン'}
@@ -89,7 +87,7 @@ export const Layout = ({ children }: Props) => {
               className="block flex h-[56px] w-[188px] items-center justify-center pb-[8px] pl-[20px] pr-[8px] pt-[8px]"
               to="/"
             >
-              <Icon className="m-[4px] block size-[20px] shrink-0 grow-0" icon="bi:house-fill" />
+              <div className="i-bi:house-fill m-[4px] size-[20px] shrink-0 grow-0" />
               <span className="grow-1 shrink-1 ml-[16px] text-left text-[14px] font-bold">ホーム</span>
             </Link>
 
@@ -97,7 +95,7 @@ export const Layout = ({ children }: Props) => {
               className="block flex h-[56px] w-[188px] items-center justify-center pb-[8px] pl-[20px] pr-[8px] pt-[8px]"
               to="/timetable"
             >
-              <Icon className="m-[4px] block size-[20px] shrink-0 grow-0" icon="fa-solid:calendar" />
+              <div className="i-fa-solid:calendar m-[4px] size-[20px] shrink-0 grow-0" />
               <span className="grow-1 shrink-1 ml-[16px] text-left text-[14px] font-bold">番組表</span>
             </Link>
           </nav>
