@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Ellipsis from 'react-ellipsis-component';
 import { Flipped } from 'react-flip-toolkit';
 import { NavLink } from 'react-router';
@@ -12,15 +13,39 @@ interface Props {
 }
 
 export const SeriesItem = ({ series }: Props) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
   return (
     <Hoverable classNames={{ hovered: 'opacity-75' }}>
-      <NavLink viewTransition className="block w-full overflow-hidden" to={`/series/${series.id}`}>
+      <NavLink 
+        viewTransition 
+        className="block w-full overflow-hidden" 
+        to={`/series/${series.id}`}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
         {({ isTransitioning }) => {
           return (
             <>
               <div className="relative overflow-hidden rounded-[8px] border-[2px] border-solid border-[#FFFFFF1F]">
                 <Flipped stagger flipId={isTransitioning ? `series-${series.id}` : 0}>
-                  <img alt="" className="h-auto w-full" src={series.thumbnailUrl} width={373} />
+                  <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                    <img 
+                      alt="" 
+                      className="absolute top-0 left-0 h-full w-full object-cover" 
+                      src={series.thumbnailUrl} 
+                      width={373} 
+                      loading="lazy"
+                    />
+                  </div>
                 </Flipped>
               </div>
               <div className="p-[8px]">
